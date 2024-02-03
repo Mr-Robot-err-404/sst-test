@@ -2,7 +2,6 @@ import { StackContext, Table, Bucket } from "sst/constructs";
 
 export function StorageStack({ stack }: StackContext) {
 
-  // Create an S3 bucket
   const bucket = new Bucket(stack, "Uploads");
 
   const table = new Table(stack, "Notes", {
@@ -11,10 +10,10 @@ export function StorageStack({ stack }: StackContext) {
       noteId: "string",
     },
     primaryIndex: { partitionKey: "userId", sortKey: "noteId" },
-  });
+  })
 
   return {
     bucket,
     table,
-  };
+  }
 }
